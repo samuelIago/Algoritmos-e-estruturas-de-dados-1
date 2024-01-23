@@ -38,7 +38,7 @@ void Dados(Produto *p){
     }
 }
 
-int main(){7
+int main(){
     Produto *produto = malloc(sizeof(Produto));
     Dados(produto);
     printf("Nome: %s\n", produto->nome);
