@@ -63,9 +63,28 @@ void lanca_notas(int n, Aluno **alunos)
     }
     
 }
-
+void imprime_tudo(int n, Aluno **alunos){
+    int i;
+    int j;
+    for(i = 0; i < n; i++){
+        printf("Informacoes do aluno: %d\n", i+1);
+        printf("Nome do aluno:\n");
+        printf("%s\n",(alunos)[i]->nome);
+        printf("Numero de matricula:\n");
+        printf("%d\n",(alunos)[i]->matricula);
+        printf("Turma:\n");
+        printf("%c\n",(alunos)[i]->turma);
+        for(j = 0; j < 3; j++){
+        printf("Nota: %d\n",j+1);
+        printf("%.2f\n",(alunos)[i]->notas[j]);
+        }
+        printf("Media:");
+        printf("%.2f\n",(alunos)[i]->media);
+        }
+    
+}
 /*
-void imprime_tudo(int n, Aluno **alunos);
+
 void imprime_turma(int n, Aluno **alunos, char turma);
 void imprime_turma_aprovados(int n, Aluno **alunos, char turma);*/
 int main()
@@ -80,14 +99,15 @@ int main()
     {
         for (i = 0; i < alunosMat; i++){
             matricula(i, estudante);
-            lanca_notas(alunosMat, estudante);//aqui tem que ser alunosMat
+            lanca_notas(alunosMat, estudante);//aqui tem que ser alunosMat   
+            
         }
     }
     else
     {
         printf("limite de estudantes ultrapassado.");
     }
-    
+    imprime_tudo(alunosMat,estudante);
     // assosiar a variavel vagas ao tamanho do vetor
     for (i = 0; i < alunosMat; i++)
     {
