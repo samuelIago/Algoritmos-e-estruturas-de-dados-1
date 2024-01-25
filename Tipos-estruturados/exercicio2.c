@@ -20,7 +20,6 @@ deve escrever um programa (função main) para testar sua implementação.
 
 #define maxAlunos 3
 
-
 typedef struct aluno{
     int matricula;
     char nome[80];
@@ -31,7 +30,7 @@ typedef struct aluno{
 //eu testei como se as turmas fosse A, B, C, etc
 
 void matricula(int n, Aluno **alunos){
-    if(n != 0){
+    if(n > 0){
         int i;
         *alunos =(Aluno*) malloc(sizeof(Aluno));
         printf("Essa disciplina tem %d vagas disponiveis. \n", n);
@@ -44,21 +43,54 @@ void matricula(int n, Aluno **alunos){
         printf("Insira as suas 3 notas: \n");
         for(i = 0; i < 3; i++){
             printf("Nota: %d\n", i+1);
-        scanf(" %f",&(*alunos)->notas[i]);
+        scanf(" %f",&(*alunos)->notas[i]);        
+        
         }
-        free(alunos);
     }else{
         printf("Essa disciplina esta lotada.\n");
+
     }
 }
+void lanca_notas(int n, Aluno **alunos)
+{
+    int i = 0,j = 0;
+    float somaNotas = 0;
+    for (i = 0; i < n; i++){
+        for (j = 0; j < 3; j++){
+            somaNotas += (*alunos[i]).notas[j];
+            
+        }
+            (*alunos[i]).media = somaNotas / 3.0;
+        printf("Media do aluno: \n");
+        printf("%.2f\n",(*alunos[i]).media);
+        }
+        somaNotas = 0;
+}
 
-/*void lanca_notas(int n, Aluno **alunos);
+/*
 void imprime_tudo(int n, Aluno **alunos);
 void imprime_turma(int n, Aluno **alunos, char turma);
 void imprime_turma_aprovados(int n, Aluno **alunos, char turma);*/
 int main(){
-    int vagas = 2;
-    Aluno **estudante = (Aluno**) malloc(vagas * sizeof(Aluno*));
-    matricula(vagas,estudante);
-    return 0;
-}
+    int alunosMat;
+    int i;
+    printf("Insira quantos alunos serao matriculados:\n");
+    scanf("%d",&alunosMat);
+
+    Aluno **estudante = (Aluno**) malloc(alunosMat * sizeof(Aluno*));
+    if (alunosMat<=maxAlunos){
+        for (i = 0; i < alunosMat; i++){
+            matricula(alunosMat,&estudante[i]);
+        }
+    }else{
+            printf("limite de estudantes ultrapassado.");
+        }
+        lanca_notas(alunosMat, &estudante[i]);
+            // assosiar a variavel vagas ao tamanho do vetor
+        for (i = 0; i < alunosMat; i++)
+        {
+            free(estudante[i]);
+        }
+        free(estudante);
+        return 0;
+    }
