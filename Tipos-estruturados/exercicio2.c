@@ -18,7 +18,7 @@ deve escrever um programa (função main) para testar sua implementação.
 #include <stdlib.h>
 #include <locale.h>
 
-#define maxAlunos 3
+#define maxAlunos 5
 
 typedef struct aluno
 {
@@ -51,8 +51,9 @@ void matricula(int n, Aluno **alunos)
 void lanca_notas(int n, Aluno **alunos)
 {
     int i = 0, j = 0;
-    float somaNotas = 0;
+    
     for (i = 0; i < n; i++){
+        float somaNotas = 0;
         for (j = 0; j < 3; j++){
             somaNotas += (*alunos[i]).notas[j];
         }
@@ -83,23 +84,71 @@ void imprime_tudo(int n, Aluno **alunos){
         }
     
 }
-/*
+void imprime_turma(int n, Aluno **alunos, char turma){
+    int i;
+    int j;
+    for (i = 0; i < n; i++){
+    if (turma == (alunos)[i]->turma){
+        printf("Informacoes do aluno: %d\n", i + 1);
+        printf("Nome do aluno:\n");
+        printf("%s\n", (alunos)[i]->nome);
+        printf("Numero de matricula:\n");
+        printf("%d\n", (alunos)[i]->matricula);
+        printf("Turma:\n");
+        printf(" %c\n", (alunos)[i]->turma);
+        for (j = 0; j < 3; j++)
+        {
+            printf("Nota: %d\n", j + 1);
+            printf("%.2f\n", (alunos)[i]->notas[j]);
+        }
+        printf("Media:");
+        printf("%.2f\n", (alunos)[i]->media);
+    }
+    }
 
-void imprime_turma(int n, Aluno **alunos, char turma);
-void imprime_turma_aprovados(int n, Aluno **alunos, char turma);*/
+}
+
+void imprime_turma_aprovados(int n, Aluno **alunos, char turma){
+    int i;
+    int j;
+    for (i = 0; i < n; i++){
+    if (turma == (alunos)[i]->turma && (alunos)[i]->media >= 7){
+        printf("Esses sao os alunos aprovados da turma %c\n",turma);
+        printf("Informacoes do aluno: %d\n", i + 1);
+        printf("Nome do aluno:\n");
+        printf("%s\n", (alunos)[i]->nome);
+        printf("Numero de matricula:\n");
+        printf("%d\n", (alunos)[i]->matricula);
+        printf("Turma:\n");
+        printf(" %c\n", (alunos)[i]->turma);
+        for (j = 0; j < 3; j++)
+        {
+            printf("Nota: %d\n", j + 1);
+            printf("%.2f\n", (alunos)[i]->notas[j]);
+        }
+        printf("Media:");
+        printf("%.2f\n", (alunos)[i]->media);
+    }
+    }
+}
+
 int main()
 {
     int alunosMat;
     int i;
+    char escolheTurma;
     printf("Insira quantos alunos serao matriculados:\n");
     scanf("%d", &alunosMat);
 
     Aluno **estudante = (Aluno **)malloc(alunosMat * sizeof(Aluno *));
+    for (i = 0; i < alunosMat; i++){
+        estudante[i] = NULL;
+    }
     if (alunosMat <= maxAlunos)
     {
         for (i = 0; i < alunosMat; i++){
             matricula(i, estudante);
-            lanca_notas(alunosMat, estudante);//aqui tem que ser alunosMat   
+            lanca_notas(i+1, estudante);//aqui usa o i+1 para representar o aluno atual 
             
         }
     }
@@ -108,6 +157,11 @@ int main()
         printf("limite de estudantes ultrapassado.");
     }
     imprime_tudo(alunosMat,estudante);
+    printf("Insira uma turma valida para saber todos os estudantes nela e quais foram aprovados:\n");
+    scanf(" %c",&escolheTurma);
+    imprime_turma(alunosMat,estudante,escolheTurma);
+    imprime_turma_aprovados(alunosMat,estudante,escolheTurma);
+
     // assosiar a variavel vagas ao tamanho do vetor
     for (i = 0; i < alunosMat; i++)
     {
