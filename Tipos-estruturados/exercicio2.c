@@ -151,16 +151,18 @@ int main()
             lanca_notas(i+1, estudante);//aqui usa o i+1 para representar o aluno atual 
             
         }
-    }
-    else
-    {
-        printf("limite de estudantes ultrapassado.");
-    }
+
     imprime_tudo(alunosMat,estudante);
     printf("Insira uma turma valida para saber todos os estudantes nela e quais foram aprovados:\n");
     scanf(" %c",&escolheTurma);
     imprime_turma(alunosMat,estudante,escolheTurma);
     imprime_turma_aprovados(alunosMat,estudante,escolheTurma);
+    }
+    else
+    {
+        printf("limite de estudantes ultrapassado.");
+    }
+
 
     // assosiar a variavel vagas ao tamanho do vetor
     for (i = 0; i < alunosMat; i++)
