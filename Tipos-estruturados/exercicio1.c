@@ -13,13 +13,12 @@ e) Escreva uma função main para testar as funções anteriores*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
-typedef struct ingresso
-{
+typedef struct ingresso{
     float preco;
     char local[20];
     char atracao[20];
 }Ingresso;
-
+//strutura Ingresso vai receber o ponteiro i para ser usada
 void preenche(Ingresso *i){
     printf("Digite o preço do ingresso: \n");
     scanf("%f", &i->preco);
@@ -35,36 +34,29 @@ void imprime(Ingresso *i){
 }
 void altera_preco(Ingresso *i, float valor){
     printf("Valor atual do ingresso: %.2f \n",i->preco);
-    i->preco = valor;
+    i->preco = valor;//i->preco recebeu o conteudo de valor
     printf("Novo valor atualizado: %.2f \n",i->preco);
     imprime(i);
 }
 void imprime_menor_maior_preco(int n, Ingresso *vet){
-    int igressoBarato = 0, ingressoCaro = 0;
+    int ingressoBarato = 0, ingressoCaro = 0;
     int i;
     for (i = 0; i < n; i++){
-        if (vet[i].preco > vet[ingressoCaro].preco)
-        {
-            ingressoCaro = i;
+        if (vet[i].preco > vet[ingressoCaro].preco){
+            ingressoCaro = i;//ser o preco do ingresso da posicao i for maior que o atual com o ingresso mais caro, esse ingresso recebera a variavel ingressoCaro
         }
-        else if (vet[i].preco < vet[igressoBarato].preco)
-        {
-            igressoBarato = i;
+        else if (vet[i].preco < vet[ingressoBarato].preco){
+            ingressoBarato = i;//mesma coisa com o ingressoBarato so que menor
         }
     }
-    printf("Esse é o ingresso mais caro:\n");
-    printf("Preço: %.2f\n", vet[ingressoCaro].preco);
-    printf("Local: %s\n", vet[ingressoCaro].local);
-    printf("Atração: %s\n", vet[ingressoCaro].atracao);
-
-    printf("Esse é o ingresso mais barato:\n");
-    printf("Preço: %.2f\n", vet[igressoBarato].preco);
-    printf("Local: %s\n", vet[igressoBarato].local);
-    printf("Atração: %s\n", vet[igressoBarato].atracao);
+    printf("Ingresso mais caro: \n");
+    imprime(&vet[ingressoCaro]);
+    printf("Ingresso mais barato: \n");
+    imprime(&vet[ingressoBarato]);
 }
 
     int main(){
-    setlocale(LC_ALL,"Portuguese");
+    setlocale(LC_ALL,"Portuguese");//por algum motivo o locale n esta prestando no codigo todo
     int totalIngressos = 0;
     int i;
     printf("Insira a quantidade de Ingressos disponiveis:\n");
@@ -89,7 +81,7 @@ void imprime_menor_maior_preco(int n, Ingresso *vet){
     scanf("%d",&numero);
     printf("Insira o novo valor: \n");
     scanf("%f", &novo_valor);
-    altera_preco(&ingresso[numero -1], novo_valor);
+    altera_preco(&ingresso[numero -1], novo_valor);//o numero-1 é para caso o usuario digite 1 o programa entenda que é o ingresso 0
     imprime_menor_maior_preco(totalIngressos,ingresso);
     free(ingresso);
     return 0;
