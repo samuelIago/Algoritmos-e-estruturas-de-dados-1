@@ -20,8 +20,7 @@ deve escrever um programa (função main) para testar sua implementação.
 
 #define maxAlunos 5
 
-typedef struct aluno
-{
+typedef struct aluno{
     int matricula;
     char nome[80];
     char turma;
@@ -29,9 +28,8 @@ typedef struct aluno
     float media;
 } Aluno;
 // eu testei como se as turmas fosse A, B, C, etc
-
-void matricula(int n, Aluno **alunos)
-{
+//              n é o aluno atual
+void matricula(int n, Aluno **alunos){
     int i;
     alunos[n] = (Aluno *)malloc(sizeof(Aluno));
     printf("Cadastre o aluno: %d \n", n+1);
@@ -48,13 +46,11 @@ void matricula(int n, Aluno **alunos)
     }
 }
 
-void lanca_notas(int n, Aluno **alunos)
-{
+void lanca_notas(int n, Aluno **alunos){
     int i = 0, j = 0;
-    
     for (i = 0; i < n; i++){
         float somaNotas = 0;
-        for (j = 0; j < 3; j++){
+        for (j = 0; j < 3; j++){//soma notas recebe as 3 notas do aluno i entao no final dor loop for do 1 ele reseta para 0 para que nao de erro
             somaNotas += (*alunos[i]).notas[j];
         }
         (*alunos[i]).media = somaNotas / 3.0;
@@ -87,7 +83,7 @@ void imprime_tudo(int n, Aluno **alunos){
 void imprime_turma(int n, Aluno **alunos, char turma){
     int i;
     int j;
-    for (i = 0; i < n; i++){
+    for (i = 0; i < n; i++){//a funcao so ira imprimir os alunos que tiverem a turma igual a que o usuario colocou, dentro do loop for para que sempre chece ate que nao se tenha mais alunos cadastrados
     if (turma == (alunos)[i]->turma){
         printf("Informacoes do aluno: %d\n", i + 1);
         printf("Nome do aluno:\n");
@@ -112,7 +108,7 @@ void imprime_turma_aprovados(int n, Aluno **alunos, char turma){
     int i;
     int j;
     for (i = 0; i < n; i++){
-    if (turma == (alunos)[i]->turma && (alunos)[i]->media >= 7){
+    if (turma == (alunos)[i]->turma && (alunos)[i]->media >= 7){//aqui alem de mesma turma é apenas aqueles aprovados por isso usa o '&&'
         printf("Esses sao os alunos aprovados da turma %c\n",turma);
         printf("Informacoes do aluno: %d\n", i + 1);
         printf("Nome do aluno:\n");
@@ -132,8 +128,7 @@ void imprime_turma_aprovados(int n, Aluno **alunos, char turma){
     }
 }
 
-int main()
-{
+int main(){
     int alunosMat;
     int i;
     char escolheTurma;
@@ -144,8 +139,7 @@ int main()
     for (i = 0; i < alunosMat; i++){
         estudante[i] = NULL;
     }
-    if (alunosMat <= maxAlunos)
-    {
+    if (alunosMat <= maxAlunos){
         for (i = 0; i < alunosMat; i++){
             matricula(i, estudante);
             lanca_notas(i+1, estudante);//aqui usa o i+1 para representar o aluno atual 
