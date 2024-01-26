@@ -9,7 +9,6 @@ Protótipo: Circ* circ_interno(Ret* r);*/
 #include<stdlib.h>
 #include<math.h>
 
-
 typedef struct retangulo{
     float base;
     float altura;
@@ -19,22 +18,24 @@ typedef struct circulo{
     float raio;
 }Circ;
 
-Ret *ret_circunscrito(Circ *c, float h){
+Ret *ret_circunscrito(Circ *c, float h){//aloca o ponteiro maiorRetangulo do tipo struct Ret
     Ret *maiorRetangulo = malloc(sizeof(Ret));
     maiorRetangulo->base = 2 * sqrt(pow(c->raio, 2) - pow(h/2, 2));
     maiorRetangulo->altura = h;
     return maiorRetangulo;
 }
 
-Circ *circ_interno(Ret *r){
-    Circ *maiorCirculo = malloc(sizeof(Circ));
+Circ *circ_interno(Ret *r){//aloca o ponteiro maiorCirculo do tipo struct Circ
+    Circ *maiorCirculo = malloc(sizeof(Circ));//fmin é para que o programa use o menor desses 2 valores dentro dela <math.h>
     maiorCirculo->raio = fmin(r->base/2, r->altura/2);
     return maiorCirculo;
 }
-int main()
-{
+int main(){
     Ret *RetangCircunscrito;
     Circ *CirculoInterno;
+    // esse inputs sao para que eu armazene os dados e depois os coloque dentro dos ponteiros.
+    Circ circuloInput;
+    Ret retanguloInput;
     float base, altura, raio;
 
     printf("Insira a base:\n");
@@ -46,15 +47,14 @@ int main()
     printf("Insira o raio:\n");
     scanf("%f", &raio);
 
-    Circ circuloInput;
     circuloInput.raio = raio;
+    //usando os dados dentro do circuloInput para que o return seja colocado dentro do RetangCircunscrito
     RetangCircunscrito = ret_circunscrito(&circuloInput, altura);
 
     printf("Base do maior retangulo: %.2f, Altura do maior retangulo: %.2f\n", RetangCircunscrito->base, RetangCircunscrito->altura);
 
-    Ret retanguloInput;
     retanguloInput.base = base;
-    retanguloInput.altura = altura;
+    retanguloInput.altura = altura;//mesmo caso aqui
     CirculoInterno = circ_interno(&retanguloInput);
     printf("Raio do maior circulo: \n");
     printf("%.2f",CirculoInterno->raio);
