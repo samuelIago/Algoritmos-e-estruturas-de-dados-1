@@ -1,4 +1,4 @@
-//Questão 3) Qual ser� a sa�da exibida pelo programa a seguir:
+//Questão 3) Qual será a saída exibida pelo programa a seguir:
 #include <stdio.h>
 int main(void) {
  int a, b, c, d;
@@ -16,31 +16,26 @@ int main(void) {
  printf("%d\t%d\t%d\t%d\n", a, b, c, d);
  return 0;
 }
-/*Observe que, se int *p � uma vari�vel do tipo ponteiro para inteiro, ent�o int **pp � uma
-vari�vel do tipo ponteiro para ponteiro de inteiro, isto �, uma var�vel que poder� armazenar o
-endere�o de um ponteiro do tipo int. */
+/*Observe que, se int *p é uma variável do tipo ponteiro para inteiro, então int **pp é uma variável do tipo ponteiro para ponteiro de inteiro, isto é, uma variável que poder armazenar o endereço de um ponteiro do tipo int. */
 
-/* A saida � a=11, b=20, c= 10 d=30
+/* A saida é a=11, b=20, c= 10 d=30
 
-o endere�o de a est� em p2 e o endere�o de c est� em p3
-p1 recebe o endere�o de p2, logo ap�s isso p2 recebe o conteudo de 10.
-no final (*p1)++;, nessa parte diz que o conteudo de p1 recebe um incremento, e como p1
-� o endere�o de a, a vira 11.
-b nunca muda, entao b � 20.
-
+o endereço de a está em p2 e o endereço de c está em p3
+p1 recebe o endereço de p2, logo após isso p2 recebe o conteudo de 10.
+no final (*p1)++;, nessa parte diz que o conteudo de p1 recebe um incremento, e como p1 é o endereço de a, a vira 11.
+b nunca muda, entao b é 20.
 pp = &p1;
-*p3 = **pp; se fosse 1 * seria o endere�o de p1, mas j� que � 2* 
-primeiro � o endere�o e o segundo � o conteudo do endere�o p1 que � a=10.
-Nessa parte a variavel pp armazena o endere�o de p1, ap�s isso 
-o conteudo do ponteiro p3 recebe o conteudo de pp, e o conteudo de pp � o endere�o de p1
-que � 10, por isso c = 10
+*p3 = **pp; se fosse 1 * seria o endereço de p1, mas já que é 2* 
+primeiro é o endereço e o segundo é o conteudo do endereço p1 que é a=10.
+Nessa parte a variavel pp armazena o endereço de p1, após isso 
+o conteudo do ponteiro p3 recebe o conteudo de pp, e o conteudo de pp é o endereço de p1 que é 10, por isso c = 10
 
 int *p4 = &d;
 *p4 = b + (*p1)++;
-Nessa parte o conteudo do ponteiro p4 � b = 20 + o conteudo de p1 10.
-esse incremento n�o conta por causa dos parenteses, j� que tem eles,
+Nessa parte o conteudo do ponteiro p4 é b = 20 + o conteudo de p1 10.
+esse incremento não conta por causa dos parenteses, já que tem eles,
 p4 = 30.
-mas caso n�o tivesse, p4 seria igual a 31.
+mas caso não tivesse, p4 seria igual a 31.
 
 EXEMPLO:
 x=10

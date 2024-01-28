@@ -1,16 +1,13 @@
-/*Quest„o 4) Crie um programa para calcular a ·rea e o perÌmetro de um hex·gono. O seu
-programa deve implementar uma funÁ„o chamada calcula_hexagono que calcula a ·rea e o
-perÌmetro de um hex·gono regular de lado l. A funÁ„o deve obedecer ao seguinte protÛtipo:
-void calcula_hexagono(float l, float *area, float *perimetro); A ·rea e o perÌmetro de um
-hex·gono regular s„o dados, respectivamente, por:
+/*Quest√£o 4) Crie um programa para calcular a √°rea e o per√≠metro de um hex√°gono. O seu programa deve implementar uma fun√ß√£o chamada calcula_hexagono que calcula a √°rea e o per√≠metro de um hex√°gono regular de lado l. A fun√ß√£o deve obedecer ao seguinte prot√≥tipo:
+void calcula_hexagono(float l, float *area, float *perimetro); A √°rea e o per√≠metro de um hex√°gono regular s√£o dados, respectivamente, por:
 A=3l^2raiz3/2
 
 P=6l
 
-Obs: Para os c·lculos, utilize as funÁıes sqrt e pow do mÛdulo math da biblioteca
-padr„o de C. Em seguida, crie a funÁ„o principal do programa e utilize a funÁ„o
-calcula_hexagono para calcular a ·rea e o perÌmetro de um hex·gono de lado l
-informado pelo usu·rio.*/
+Obs: Para os c√°lculos, utilize as fun√ß√µes sqrt e pow do m√≥dulo math da biblioteca
+padr√£o de C. Em seguida, crie a fun√ß√£o principal do programa e utilize a fun√ß√£o
+calcula_hexagono para calcular a √°rea e o per√≠metro de um hex√°gono de lado l
+informado pelo usu√°rio.*/
 
 #include <stdio.h>
 #include <math.h>
@@ -25,9 +22,9 @@ int main()
 	scanf("%f",&lado);
 	
 	calcula_hexagono(lado,&Perimetro,&Area);
-	//Isso faz o codigo entender que essa funÁ„o existe e que vai usar o int lado
-	// e os enfereÁos das funÁıes Perimetro e Area
-	printf("O perimetro È %.2f, a Area È %.2f\n",Perimetro,Area);
+	//Isso faz o codigo entender que essa fun√ß√£o existe e que vai usar o int lado
+	// e os enfere√ßos das fun√ß√µes Perimetro e Area
+	printf("O perimetro √© %.2f, a Area √© %.2f\n",Perimetro,Area);
 	return 0;
 }
 
@@ -36,8 +33,8 @@ void calcula_hexagono(float l, float *area, float *perimetro){
 	*perimetro = 6*l;
 	
 	*area = (3* pow(l,2)*sqrt(l))/2;
-	//A funÁao est· fazendo com que os conte˙dos do perimetro sejam 6*l
-	//como o ponteiro perimetro usa o endereÁo da funÁ„o Perimetro
-	//ao alterar o conteudo desse ponteiro, o conte˙do da variavel È alterado junto.
+	//A fun√ß√£o est√° fazendo com que os conte√∫dos do perimetro sejam 6*l
+	//como o ponteiro perimetro usa o endere√ßo da fun√ß√£o Perimetro
+	//ao alterar o conteudo desse ponteiro, o conte√∫do da variavel √© alterado junto.
 	
 }
