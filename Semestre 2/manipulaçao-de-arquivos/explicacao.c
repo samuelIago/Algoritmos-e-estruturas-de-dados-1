@@ -28,5 +28,6 @@ int fgetc(FILE*fp);//le um unico caractere por vez
 char*fgets(char*s,int n,FILE*fp);//pega uma string
 
 Funções para escrever dados:
-
+fputs
+fprintf
 */
