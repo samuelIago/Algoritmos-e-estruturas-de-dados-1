@@ -1,37 +1,54 @@
-/*Questão 1) Escreva um programa em C que leia de um arquivo as notas dos alunos de uma turma e escreva em outro arquivo o nome e a média de cada aluno, bem como a sua situação (aprovado (média >= 7.0) ou reprovado). Tanto no arquivo de entrada quanto no de saída, considere que os dados em cada linha estão separados por um caractere de tabulação ‘\t’. Para a execução do programa com o arquivo de entrada “entrada_q3.txt”, deverá ser criado o arquivo de saída “saída_q3.txt”, como ilustrado a seguir.*/
+#include <stdio.h>
+#include <stdlib.h>
 
-#include<stdio.h>
-#include<stdlib.h>
-
-typedef struct aluno{
+typedef struct aluno
+{
     char nome[20];
-    int nota[3];
+    float nota[3];
     float media;
-}Aluno;
+} Aluno;
 
-int main(){
-    Aluno *estudante = malloc(sizeof(Aluno));
-    FILE*arquivo = fopen("entrada_q3.txt","rt");
-    if(arquivo == NULL){
+int main()
+{
+    Aluno *estudante = malloc(4 * sizeof(Aluno));
+    if (estudante == NULL)
+    {
+        printf("Erro na alocação de memória!\n");
+        exit(1);
+    }
+//             abrindo um arquivo"entrada_q3" que sera apenas pra ler'r'
+    FILE *arquivo = fopen("entrada_q3.txt", "rt");
+    FILE *saida = fopen("saida_q3.txt", "wt");//e abrindo um arquivo apenas pra escrever 'w'
+
+    if (arquivo == NULL || saida == NULL){
         printf("Erro na abertura do arquivo!\n");
         exit(1);
     }
     else{
         printf("Arquivo aberto!\n");
     }
-    int i = 0;
-    //vai armazernar na struct na parte nome, com 20 caracteres de espaço e vai procurar no arquivo.
-    do{
-        fgets(estudante[i].nome,20,arquivo); 
-        if(arquivo == '\n'){
-            i++;
+    int i ,j;
+    for (i = 0; i < 4; i++){
+        //escaneia o arquivo, as strings serao colocadas no estudante [i].nome
+        //     'nome do arquivo', 'tipo', 'onde sera armazenado'
+        fscanf(arquivo, "%s", estudante[i].nome);
+        for (j = 0; j < 3; j++){//colocando as notas
+            fscanf(arquivo, "%f", &estudante[i].nota[j]);
+        }//calculando a media
+        estudante[i].media = (estudante[i].nota[0] + estudante[i].nota[1] + estudante[i].nota[2])/ 3;
+
+        if (estudante[i].media >= 7.0){
+            //no            aqui '%s estudande[i].nome vai imprimir a parte de string e vai parar no \t e estudante[i].media vai imprimir a media
+            fprintf(saida, "%s\t%.2f\tAprovado\n", estudante[i].nome, estudante[i].media);
         }
-        } while (!feof(arquivo));//o feof serve para indicar o fim do arquivo
-        for(i = 0; i < 3; i++){
-            printf("%s\n",estudante[i].nome);
+        else
+        {
+            fprintf(saida, "%s\t%.2f\tReprovado\n", estudante[i].nome, estudante[i].media);
         }
-    
+    }
+
     fclose(arquivo);
+    fclose(saida);
     free(estudante);
     return 0;
 }
