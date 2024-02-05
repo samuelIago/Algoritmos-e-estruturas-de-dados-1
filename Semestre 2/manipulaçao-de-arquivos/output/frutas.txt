@@ -1,2 +1,2 @@
-Nome: banana, Preco: 3.50
-Nome: melancia, Preco: 6.00
+Nome: banana maca, Preco: 4.50
+Nome: melancia, Preco: 7.50
