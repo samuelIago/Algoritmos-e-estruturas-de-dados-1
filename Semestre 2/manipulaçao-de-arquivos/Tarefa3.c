@@ -58,5 +58,6 @@ int main(){
     }
 }
     fclose(InfoFrutas);
+    printf("Encerramento do programa.");
     return 0;
 }

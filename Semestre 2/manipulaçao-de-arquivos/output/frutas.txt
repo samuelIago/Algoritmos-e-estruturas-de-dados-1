@@ -1,3 +1,2 @@
-Nome: banana, Preco: 2.50
-Nome: abacaxi, Preco: 5.00
-Nome: uva, Preco: 6.00
+Nome: banana, Preco: 3.50
+Nome: melancia, Preco: 6.00
