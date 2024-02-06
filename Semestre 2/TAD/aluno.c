@@ -39,3 +39,37 @@ void imprime(Aluno *aluno)
     printf("IRA: %.2f", aluno->IRA);
 }
 
+Aluno **cadastra_alunos(int *i)
+{
+    Aluno **alunos = (Aluno **)malloc(sizeof(Aluno *));
+    char cont;
+    do
+    {
+        alunos = (Aluno **)realloc(alunos, ((*i) + 1) * sizeof(Aluno *));
+        alunos[(*i)] = recebe_dados();
+        printf("Deseja matricular outro aluno? 1-Sim, 0-Nao \n");
+        scanf(" %c", &cont);
+        (*i)++;
+    } while (cont != '0');
+    return alunos;
+}
+
+void libera_dados(Aluno **aluno, int cont)
+{
+    int i;
+    for (i = 0; i < cont; i++)
+    {
+        free(aluno[i]);
+    }
+    free(aluno);
+}
+
+void imprime_tudo(Aluno **aluno, int cont)
+{
+    int i;
+    for (i = 0; i < cont; i++)
+    {
+        printf("\nAluno %d\n", i + 1);
+        imprime(aluno[i]);
+    }
+}
