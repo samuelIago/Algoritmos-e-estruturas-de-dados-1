@@ -44,7 +44,7 @@ Aluno **cadastra_alunos(int *i)
     Aluno **alunos = (Aluno **)malloc(sizeof(Aluno *));
     char cont;
     do
-    {
+    {//                                 i+1 porque alocar 0 da 0
         alunos = (Aluno **)realloc(alunos, ((*i) + 1) * sizeof(Aluno *));
         alunos[(*i)] = recebe_dados();
         printf("Deseja matricular outro aluno? 1-Sim, 0-Nao \n");

@@ -37,26 +37,26 @@ int main(){
     while (repetir == 0){
         int escolha;
         printf("Digite 1 caso queira cadastrar uma fruta\n");
-    scanf("%d",&escolha);
+        scanf("%d",&escolha);
 
-    if(escolha == 1){
-        Fruta *fruta = malloc (sizeof(Fruta));
-        
-        if (fruta == NULL){
-            printf("Alocacao falha\n");
-            exit(1);
+        if(escolha == 1){
+            Fruta *fruta = malloc (sizeof(Fruta));
+            
+            if (fruta == NULL){
+                printf("Alocacao falha\n");
+                exit(1);
+            }else{
+                printf("Sucesso na alocacao.\n");
+            }
+            
+            cadastrar(fruta);
+            fprintf(InfoFrutas, "Nome: %s, Preco: %.2f\n", fruta->nome, fruta->preco);
+
+            free(fruta);
         }else{
-            printf("Sucesso na alocacao.\n");
+            repetir = 1;
         }
-        
-        cadastrar(fruta);
-        fprintf(InfoFrutas, "Nome: %s, Preco: %.2f\n", fruta->nome, fruta->preco);
-
-        free(fruta);
-    }else{
-        repetir = 1;
     }
-}
     fclose(InfoFrutas);
     printf("Encerramento do programa.");
     return 0;
