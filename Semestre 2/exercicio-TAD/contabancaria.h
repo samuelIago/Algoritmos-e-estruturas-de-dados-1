@@ -6,3 +6,5 @@ ContaBancaria *Criaconta(char titular[30], int numero, float saldo);
 void imprime(ContaBancaria *Conta);
 //funcao para depositar o dinheiro
 ContaBancaria *Deposita(ContaBancaria *Conta, float valor);
+//funcao para sacar um determinado dinheiro
+ContaBancaria *Saca(ContaBancaria *Conta, float valor);

@@ -37,3 +37,13 @@ ContaBancaria *Deposita(ContaBancaria *Conta, float valor)
     return Conta;
     
 }
+ContaBancaria *Saca(ContaBancaria *Conta, float valor)
+{
+    if(Conta->saldo >= valor){
+    Conta->saldo = Conta->saldo - valor;
+    imprime(Conta);
+    return Conta;
+    }else{
+        printf("Voce nao tem saldo o sufuciente para esse saque.");
+    }
+}

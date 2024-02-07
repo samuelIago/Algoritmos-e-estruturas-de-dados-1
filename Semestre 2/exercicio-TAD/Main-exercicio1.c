@@ -23,6 +23,7 @@ int main(){
     int numero;
     float saldo;
     float deposito;
+    float saque;
     printf("Titular:\n");
     scanf(" %[^\n]s",titular);
     printf("Numero:\n");
@@ -33,8 +34,12 @@ int main(){
     imprime(Conta);
     printf("Vai depositar quanto? \n");
     scanf("%f",&deposito);
-    
+
     Deposita(Conta,deposito);
+    printf("Vai sacar quanto? \n");
+    scanf("%f",&saque);
+    
+    Saca(Conta,saque);
 
     free(Conta);
     return 0;
