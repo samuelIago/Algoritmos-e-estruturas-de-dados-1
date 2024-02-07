@@ -24,26 +24,47 @@ ContaBancaria *Criaconta(char titular[30], int numero, float saldo)
     Conta->saldo = saldo;
     return Conta;
 }
+float Saldo(ContaBancaria *Conta)
+{
+    printf("Saldo: %.2f\n", Conta->saldo);
+    return Conta->saldo;
+}
 void imprime(ContaBancaria *Conta)
 {
     printf("Titular: %s\n", Conta->titular);
     printf("Numero: %d\n", Conta->numero);
-    printf("Saldo: %.2f\n", Conta->saldo);
+    Saldo(Conta);
 }
-ContaBancaria *Deposita(ContaBancaria *Conta, float valor)
+void Deposita(ContaBancaria *Conta, float valor)
 {
-    Conta->saldo = Conta->saldo + valor;
+    Conta->saldo += valor;
     imprime(Conta);
-    return Conta;
-    
 }
-ContaBancaria *Saca(ContaBancaria *Conta, float valor)
+void Saca(ContaBancaria *Conta, float valor)
 {
-    if(Conta->saldo >= valor){
-    Conta->saldo = Conta->saldo - valor;
-    imprime(Conta);
-    return Conta;
-    }else{
+    if (Conta->saldo >= valor)
+    {
+        Conta->saldo -= valor;
+        imprime(Conta);
+    }
+    else
+    {
         printf("Voce nao tem saldo o sufuciente para esse saque.");
     }
+}
+void Transfere(ContaBancaria *origem, ContaBancaria *destino, float valor)
+{
+    if (origem->saldo >= valor)
+    {
+        origem->saldo -= valor;
+        destino->saldo += valor;
+    }
+    else
+    {
+        printf("Erro nas transferencia, valor acima do seu saldo.\n");
+    }
+}
+void ExcluiConta(ContaBancaria *Conta)
+{
+    free(Conta);
 }

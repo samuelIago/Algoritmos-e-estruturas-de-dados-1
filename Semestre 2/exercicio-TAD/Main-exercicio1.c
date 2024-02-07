@@ -14,33 +14,55 @@ c) Crie um programa que utiliza o TAD ContaBancaria. */
 
 // na main, coloca as funcoes em pratica
 
-#include<stdio.h>
-#include<stdlib.h>
-#include"contabancaria.h"
-int main(){
-    ContaBancaria *Conta;
+#include <stdio.h>
+#include <stdlib.h>
+#include "contabancaria.h"
+int main()
+{
+    ContaBancaria *Conta1, *Conta2;
     char titular[30];
     int numero;
     float saldo;
     float deposito;
     float saque;
+    float transferencia;
+    printf("Conta 1:\n");
     printf("Titular:\n");
-    scanf(" %[^\n]s",titular);
+    scanf(" %[^\n]s", titular);
     printf("Numero:\n");
-    scanf("%d",&numero);
+    scanf("%d", &numero);
     printf("Saldo\n");
-    scanf("%f$",&saldo);
-    Conta = Criaconta(titular,numero,saldo);
-    imprime(Conta);
-    printf("Vai depositar quanto? \n");
-    scanf("%f",&deposito);
+    scanf("%f$", &saldo);
+    Conta1 = Criaconta(titular, numero, saldo);
+    imprime(Conta1);
 
-    Deposita(Conta,deposito);
+    printf("\nConta 2:\n");
+    printf("Titular:\n");
+    scanf(" %[^\n]s", titular);
+    printf("Numero:\n");
+    scanf("%d", &numero);
+    printf("Saldo\n");
+    scanf("%f$", &saldo);
+    Conta2 = Criaconta(titular, numero, saldo);
+
+    imprime(Conta2);
+
+    printf("Vai depositar quanto na conta 1? \n");
+    scanf("%f", &deposito);
+    Deposita(Conta1, deposito);
+
     printf("Vai sacar quanto? \n");
-    scanf("%f",&saque);
-    
-    Saca(Conta,saque);
+    scanf("%f", &saque);
 
-    free(Conta);
+    Saca(Conta1, saque);
+    imprime(Conta1);
+    printf("Insira quanto sera transferido da conta 1 para a conta 2:\n");
+    scanf("%f", &transferencia);
+    Transfere(Conta1, Conta2, transferencia);
+    imprime(Conta1);
+    imprime(Conta2);
+
+    ExcluiConta(Conta1);
+    ExcluiConta(Conta2);
     return 0;
 }
