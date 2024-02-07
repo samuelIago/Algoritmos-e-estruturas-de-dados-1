@@ -13,6 +13,7 @@ b) Crie um arquivo (contabancaria.c) com a implementação do TAD.
 c) Crie um programa que utiliza o TAD ContaBancaria. */
 
 // na main, coloca as funcoes em pratica
+
 #include<stdio.h>
 #include<stdlib.h>
 #include"contabancaria.h"
@@ -21,6 +22,7 @@ int main(){
     char titular[30];
     int numero;
     float saldo;
+    float deposito;
     printf("Titular:\n");
     scanf(" %[^\n]s",titular);
     printf("Numero:\n");
@@ -29,6 +31,11 @@ int main(){
     scanf("%f$",&saldo);
     Conta = Criaconta(titular,numero,saldo);
     imprime(Conta);
+    printf("Vai depositar quanto? \n");
+    scanf("%f",&deposito);
+    
+    Deposita(Conta,deposito);
+
     free(Conta);
     return 0;
 }

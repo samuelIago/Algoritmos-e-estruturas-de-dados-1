@@ -11,20 +11,29 @@ struct contabancaria
     float saldo;
 };
 
-ContaBancaria *Criaconta(char titular[30],int numero,float saldo){
-    ContaBancaria *Conta = (ContaBancaria*)malloc(sizeof(ContaBancaria));
+ContaBancaria *Criaconta(char titular[30], int numero, float saldo)
+{
+    ContaBancaria *Conta = (ContaBancaria *)malloc(sizeof(ContaBancaria));
     if (Conta == NULL)
     {
         printf("Falha ao alocar a memoria\n");
         exit(1);
     }
-    strcpy(Conta->titular,titular);
+    strcpy(Conta->titular, titular);
     Conta->numero = numero;
     Conta->saldo = saldo;
     return Conta;
 }
-void imprime(ContaBancaria *Conta){
-    printf("Titular: %s\n",Conta->titular);
-    printf("Numero: %d\n",Conta->numero);
-    printf("Saldo: %.2f\n",Conta->saldo);
+void imprime(ContaBancaria *Conta)
+{
+    printf("Titular: %s\n", Conta->titular);
+    printf("Numero: %d\n", Conta->numero);
+    printf("Saldo: %.2f\n", Conta->saldo);
+}
+ContaBancaria *Deposita(ContaBancaria *Conta, float valor)
+{
+    Conta->saldo = Conta->saldo + valor;
+    imprime(Conta);
+    return Conta;
+    
 }

@@ -4,3 +4,5 @@ typedef struct contabancaria ContaBancaria;
 ContaBancaria *Criaconta(char titular[30], int numero, float saldo);
 //funcao para mostrar os dados cadastrados
 void imprime(ContaBancaria *Conta);
+//funcao para depositar o dinheiro
+ContaBancaria *Deposita(ContaBancaria *Conta, float valor);
