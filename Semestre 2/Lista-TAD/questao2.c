@@ -1,0 +1,7 @@
+/*2) Alfredo é dono de uma empresa, que nos ultimos meses, apresentou algumas irregularidades na folha de pagamento de alguns departamentos. O empresario mantém sempre atualizada a relação de seus funcionários em um arquivo, mas não consegue descobrir uma forma prática de descobrir quanto gasta com a folha de pagamento por departamento da sua empresa. Dessa forma, você foi contratado para ajudar Alfredo nesse problema. Você deve escrever um programa em C que, dado o arquivo com a relação de funcionários, imprima o valor gasto com a folha de pagamento para um determinado departamento. Os dados dos funcionários da empresa devem ser fornecidos para um vetor, de modo que uma função execute tal tarefa deve ser implementada, obedecendo ao protótipo: void copia_dados(File *fl, int n, Funcionario **pessoal); Em seguida, você deve implementar uma função que imprime o valor gasto para um determinado departamento. Essa função deve obedecer ao seguinto protótipo: void imprime_folha_pagamento(int n, Funcionario **pessoal, char depto); O formato do arquivo de texto é mostrado a seguir (funcional, nome, departamento e salário e cada informação numa linha é separado por um caractere de tabulação '\t') e a primeira linha do arquivo representa o numero de funcionários da empresa.
+caso use essa função
+imprime_folha_pagamento:
+imprime_folha_pagamento(num_func,pessoal'A');
+imprime_folha_pagamento(num_func,pessoal'B');
+imprime_folha_pagamento(num_func,pessoal'C');
+ */
