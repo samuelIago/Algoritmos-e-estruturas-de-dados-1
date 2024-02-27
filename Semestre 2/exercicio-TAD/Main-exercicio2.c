@@ -46,38 +46,12 @@ Observações:
 
 int main()
 {
-    // Criando aluno
-    Aluno *aluno;
-    char nome[100];
-    int matricula;
-    printf("Insira o nome do aluno: \n");
-    scanf(" %[^\n]s",nome);
-    printf("Insira a matricula: \n");
-    scanf("%d",&matricula);
-    aluno = cria_aluno(nome,matricula);
-    // Matriculando disciplinas
-    int num_disciplinas;
-    printf("Insira o numero de disciplinas que o aluno deseja matricular: ");
-    scanf("%d", &num_disciplinas);
-
-    for (int i = 0; i < num_disciplinas; i++)
-    {
-        char nome[100];
-        int codigo;
-        printf("Insira o nome da disciplina %d: ", i + 1);
-        scanf("%s", nome);
-        printf("Insira o codigo da disciplina %d: ", i + 1);
-        scanf("%d", &codigo);
-
-        Disciplina *disciplina = cria_disciplina(nome, codigo);
-        matricula_disciplina(aluno, disciplina);
-    }
-
-    // Imprimindo aluno
-    imprime_alunos(aluno);
-
-    // Liberando memória
-    exclui_aluno(aluno);
+ 
+//fazer numero fixo de malloc
+//ponteiro duplo
+//cadastrar cada um dessa forma aluno[i] = cadastrar(nome,ba)
+//for(i=0;i<alunosCadastrados;i++)
+//imprimirAluno(aluno[i])
 
     return 0;
 }

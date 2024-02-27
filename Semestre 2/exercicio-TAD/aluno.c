@@ -19,24 +19,7 @@ Aluno *cria_aluno(char *nome, int matricula)
     aluno->matricula = matricula;
     return aluno;
 }
-void matricula_disciplina(Aluno *aluno, Disciplina *disciplina)//X
-{
-    if (aluno == NULL || disciplina == NULL)
-    {
-        printf("Aluno ou disciplina nao existem.\n");
-        return;
-    }
-    int i;
-    int N_disciplinas = 0;
-    printf("Insira quantas disciplinas o aluno vai se matricular: \n");
-    scanf("%d", &N_disciplinas);
-    for (i = 0; i < N_disciplinas; i++)
-    {
-        printf("Insira a disciplina %d", i + 1);
-        aluno->disciplinas[i] = disciplina;
-    }
-    aluno->num_disciplinas = N_disciplinas;
-}
+//refazer matriculaDisciplina
 void imprime_alunos(Aluno *aluno)
 {
     if (aluno == NULL)
@@ -49,11 +32,7 @@ void imprime_alunos(Aluno *aluno)
     printf("Numero de matricula: %d\n", aluno->matricula);
     printf("Numero de disciplinas em que o aluno esta: %d\n", aluno->num_disciplinas);
 
-    /*for (i = 0; i < aluno->num_disciplinas; i++)
-    {
-        printf("Nome da disciplina: %d", i + 1);
-        void imprime_disciplina();
-    }*/
+    //refazer o loop para que imprima as info
 }
 
 void exclui_aluno(Aluno *aluno)
