@@ -43,16 +43,13 @@ void lista_null(Lista *lista){
 
 Lista *procura_valor(Lista *lista, int v){//nao terminada
     Lista *p;
-    for( p = 1; p!= NULL; p=p->prox_elemento){
+    for( p = lista; p!= NULL; p=p->prox_elemento){
         if(p->informacao == v){
             printf("Elemento encontrado.");
             return p;
-        }else{
-            printf("Elemento nao encontado.");
-            return NULL;
         }
-
     }
+    return NULL;
 
 }
 //fazer funcao que libere a memoria
