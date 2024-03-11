@@ -46,7 +46,19 @@ Observações:
 
 int main()
 {
- 
+    Aluno *aluno;
+    int MaxAlunos;
+    int i;
+ printf("Insira quantos alunos serao cadastrados:");
+ scanf("%d",&MaxAlunos);
+ for (i = 0; i < MaxAlunos; i++){
+    int matricula = 0;
+    char nome[100];
+    printf("Insira o nome do aluno: %d+1\n",i);
+    scanf(" %[^\n]s",nome);
+    printf("Insira a matricula: \n");
+    scanf("%d",&matricula);
+ }
 //fazer numero fixo de malloc
 //ponteiro duplo
 //cadastrar cada um dessa forma aluno[i] = cadastrar(nome,ba)
