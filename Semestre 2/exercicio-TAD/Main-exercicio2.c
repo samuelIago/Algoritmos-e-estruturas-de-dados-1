@@ -44,26 +44,32 @@ Observações:
 #include "aluno.h"
 #include "disciplina.h"
 
-int main()
-{
+int main(){
     Aluno *aluno;
-    int MaxAlunos;
-    int i;
- printf("Insira quantos alunos serao cadastrados:");
- scanf("%d",&MaxAlunos);
- for (i = 0; i < MaxAlunos; i++){
-    int matricula = 0;
+    Disciplina *disciplina;//outra coisa que nao lembrei de ter colocado no codigo anterior
+    int matricula,codigo;
     char nome[100];
-    printf("Insira o nome do aluno: %d+1\n",i);
-    scanf(" %[^\n]s",nome);
-    printf("Insira a matricula: \n");
-    scanf("%d",&matricula);
- }
-//fazer numero fixo de malloc
-//ponteiro duplo
-//cadastrar cada um dessa forma aluno[i] = cadastrar(nome,ba)
-//for(i=0;i<alunosCadastrados;i++)
-//imprimirAluno(aluno[i])
+    int opcao1, opcao2;
 
-    return 0;
+    do
+    {
+        aluno = cria_aluno(nome,matricula);
+        pedeDados(aluno);
+        do
+        {
+            disciplina = pedir();
+            matricula_disciplina(aluno,disciplina);
+            printf("Insira 1 para cadastrar outra disciplina\n"); 
+            printf("%s\n",aluno);
+            printf("%s\n",disciplina);
+            scanf("%d",&opcao1);
+            
+        } while (opcao1 == 1);
+        printf("Insira 1 para cadastrar outro aluno\n");
+        scanf("%d",&opcao2);
+    } while (opcao2 == 1);
+
+    exclui_aluno(aluno);
+    exclui_disciplina(disciplina);
+
 }

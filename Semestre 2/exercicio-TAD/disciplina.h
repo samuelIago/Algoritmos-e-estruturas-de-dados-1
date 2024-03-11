@@ -7,5 +7,6 @@ typedef struct disciplina Disciplina;
 Disciplina *cria_disciplina(char nome[], int codigo);
 //funcao para excluir a disciplina
 void exclui_disciplina(Disciplina *disciplina);
-// funcao que imprime a disciplina fiz ela pois assim nao estava funcionando printf(" %s\n",aluno->disciplinas[i]); então fui recomendado a fazer uma funcao
-void imprime_disciplina(Disciplina *disciplina);
+//funcao que solicita os dados da disciplia(joan me recomendou fazer algo do tipo, pois o erro é que nao estava chamando)
+Disciplina *pedir();
+

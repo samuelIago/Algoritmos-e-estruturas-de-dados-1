@@ -10,7 +10,6 @@ Aluno *cria_aluno(char nome[], int matricula);
 void matricula_disciplina(Aluno *aluno, Disciplina *disciplina);
 //funcao que exclui o aluno
 void exclui_aluno(Aluno *aluno);
-//funcao para imprimir os dados do aluno
-void imprime_alunos(Aluno *aluno);
-
+//funcao para pedir os dados do aluno
+void pedeDados(Aluno *aluno);
 #endif //ALUNO_H

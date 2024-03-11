@@ -1,5 +1,5 @@
 #include "aluno.h"
-
+#include "disciplina.h"
 struct aluno
 {
     char nome[100];
@@ -14,25 +14,34 @@ Aluno *cria_aluno(char *nome, int matricula)
     if (aluno == NULL)
     {
         printf("Erro na alocacao de memoria do aluno.");
+        exit(1);
     }
-    strcpy(aluno->nome, nome);
+    strncpy(aluno->nome,nome,sizeof(aluno->nome)-1);//talvez isso seja outro erro pois ao copiar nao estava deixando espaço extra
+    aluno->nome[sizeof(aluno->nome)-1]='\0';//para ter certeza de que o ultimo caractere sera \0 assim ele nao estoura
     aluno->matricula = matricula;
+    aluno->num_disciplinas = 0;//para que o num_disciplinas inicie em 0
     return aluno;
 }
-//refazer matriculaDisciplina
-void imprime_alunos(Aluno *aluno)
-{
-    if (aluno == NULL)
-    {
-        printf("Aluno nao existe.\n");
-        return;
-    }
-    int i;
-    printf("Nome do aluno: %s\n", aluno->nome);
-    printf("Numero de matricula: %d\n", aluno->matricula);
-    printf("Numero de disciplinas em que o aluno esta: %d\n", aluno->num_disciplinas);
 
-    //refazer o loop para que imprima as info
+void matricula_disciplina(Aluno*aluno, Disciplina*disciplina){
+    if (aluno->num_disciplinas < 10)
+    {//ou seja sera inserido disciplina na struct disciplinas de um numero definido e que sera incremetado apos cada disciplina colocada
+        aluno->disciplinas[aluno->num_disciplinas] = disciplina;
+        aluno->num_disciplinas ++;
+        printf("Disciplina cadastrada com sucesso.");
+    }else
+    {
+        printf("Numero maximo de disciplinas alcancado.");
+        exit(1);
+    }
+    
+    
+}
+void pedeDados(Aluno *aluno){
+    printf("Digite seu nome:\n");
+    scanf("%s",aluno->nome);
+    printf("Digite a sua matricula\n");
+    scanf("%d",&(aluno->matricula));
 }
 
 void exclui_aluno(Aluno *aluno)
